@@ -1,4 +1,7 @@
-using SIAN, Logging
+using SIAN
+using Logging
+using Nemo
+using OrderedCollections
 @info "Setting up the problem"
 
 ode = @ODEmodel(
