@@ -1,9 +1,7 @@
 using SIAN
-using Logging
-using Nemo
-using OrderedCollections
-using Dates
-println(Dates.format(now(), "HH:MM"))
+using SIAN.Logging
+using SIAN.Nemo
+using SIAN.OrderedCollections
 @info "Setting up the problem"
 
 ode = @ODEmodel(
@@ -23,7 +21,11 @@ ode = @ODEmodel(
     y1(t) = x12(t)
 )
 
-res = identifiability_ode(ode, get_parameters(ode); p=0.99, p_mod=0, local_only=true)
+@time res = identifiability_ode(ode, get_parameters(ode); p=0.99, p_mod=0, local_only=true)
 
-println(res, Dates.format(now(), "HH:MM"))
+# println(res)
+
+for (k, v) in res
+    println("$k = $v")
+end
 
