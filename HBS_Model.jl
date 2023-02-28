@@ -21,7 +21,7 @@ ode = @ODEmodel(
     y1(t) = x12(t)
 )
 
-@time res = identifiability_ode(ode, get_parameters(ode); p=0.99, p_mod=0, local_only=true)
+@time res = identifiability_ode(ode, get_parameters(ode); p=0.99, p_mod=0, local_only=true, known_states=[x12])
 
 # println(res)
 

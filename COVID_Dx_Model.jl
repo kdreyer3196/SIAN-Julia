@@ -61,7 +61,40 @@ ode = @ODEmodel(
     y1(t) = x_f(t)
 )
 
-@time res = identifiability_ode(ode, get_parameters(ode); p=0.99, p_mod=0, local_only=true)
+@time res = identifiability_ode(ode, get_parameters(ode); p=0.99, p_mod=0, local_only=true, known_states=[
+    x_v,
+    x_p1,
+    x_p2,
+    x_p1v,
+    x_p2u,
+    x_p1cv,
+    x_p2cu,
+    x_RT,
+    x_RNase,
+    x_RTp1v, 
+    x_RTp2u,
+    x_RTp1cv,
+    x_RTp2cu,
+    x_cDNA1v,
+    x_cDNA2u,
+    x_RNasecDNA1v, 
+    x_RNasecDNA2u, 
+    x_cDNA1, 
+    x_cDNA2,
+    x_p2cDNA1, 
+    x_p1cDNA2,
+    x_RTp2cDNA1,
+    x_RTp1cDNA2,
+    x_T7, 
+    x_pro,
+    x_T7pro,
+    x_u,
+    x_iCas13,
+    x_Cas13,
+    x_uv, 
+    x_qRf,
+    x_q,
+    x_f])
 
 for (k, v) in res
     println("$k = $v")
